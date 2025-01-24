@@ -39,7 +39,10 @@ public class APITest {
                 .assertThat().body(matchesJsonSchema(jsonWeather)) // json schema validator
                 .extract().response();
 
-        System.out.println("Response Body: " + response.getBody().prettyPrint());
+//        System.out.println("Response Body: " + response.getBody().prettyPrint()); // kalau ingin mencetak semua tanpa filter hanya cuaca
+
+        String WeatherandTemperature = response.jsonPath().getString("weather");
+        System.out.println(WeatherandTemperature);
     }
 
     public void AirPolution(String latitude, String longitude) {
